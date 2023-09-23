@@ -44,7 +44,7 @@ body * {
 
 #caixa {
    width: 100%;
-   max-width: 588px;
+   max-width: 587px;
    /*a ordem do margin é em sentido horário, começando de cima(top,right,bottom,left*/
    margin: 56px auto 0px;
    padding: 24px;
