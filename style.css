@@ -1,0 +1,195 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+
+/*as linhas abaixo são para fazer o light mode*/
+/*colocar aqui todas as partes do dark mode que você for alterar. Os nomes"text-color" e todos os outros são
+variáveis, pode nomear da maneira que quiser para se localizar depois, não irá influenciar no código.*/
+:root {
+   --text-color:white;
+   --bg-url: url(./assets/bg-mobile.jpg);
+   --stroke-color: rgba(255, 255, 255, 0.5);
+   --surface-color: rgba(0, 0, 0, 0.5);
+   --surface-color-hover:rgba(0, 0, 0, 0.02);
+   --highlight-color:rgba(255, 255, 255,0.2);
+   --switch-bg-url: url(./assets/MoonStars.svg);
+}
+
+/*essa é a parte que muda no light mode*/
+.light {
+   --text-color:black;
+   --bg-url: url(./assets/bg-mobile-light.jpg);
+   --stroke-color: rgba(0, 0, 0, 0.5);
+   --surface-color: rgba(0, 0, 0, 0.05);
+   --surface-color-hover:rgba(0, 0, 0, 0.02);
+   --highlight-color:rgba(0, 0, 0, 0.1);
+   --switch-bg-url: url(./assets/Sun.svg);
+}
+
+
+body {
+ /*deve ser colocado na seguinte ordem: background:color image repeat position/size*/
+
+ background: var(--bg-url) no-repeat top center/cover;
+}
+
+/*Fonte que será usada em toda a página*/
+body * {
+   font-family: 'Inter', sans-serif;
+   color: var(--text-color)
+}
+
+#caixa {
+   width: 360px;
+   /*a ordem do margin é em sentido horário, começando de cima(top,right,bottom,left*/
+   margin: 56px auto 0px;
+   padding: 24px;
+}
+
+
+/* profile/raiz */
+#profile {
+   text-align: center;
+   padding: 24px;
+}
+
+/* profile/imagem */
+#profile img {
+   width: 112px;
+
+}
+
+/* profile/p */
+#profile p{
+   font-weight: 500;
+   line-height: 24px;
+   margin-top: 8px;
+}
+
+/* switch/raiz */
+#switch {
+   /*é usado quando queremos alterar a posição de um elemento tendo como referência a posição inicial dele, ou seja, só vai posicionar os elementos de maneira organizada em sua caixa.*/
+   position: relative;
+   /*está diminuindo o tamanho da caixa para alinhar com o spam/switch*/
+   width: 64px;
+   margin: 4px auto;
+}
+
+/* switch/botão */
+#switch button{
+   width: 32px;
+   height: 32px;
+   background: white var(--switch-bg-url) no-repeat center;
+   border: 0;
+   left: 0;
+   border-radius: 50%;
+
+
+/*esse comando permite que o botão fique em qualquer lugar da sua página, te permitindo sobrepor camadas, ou seja, te ajuda a colocar o botão em cima do "span"*/
+   position: absolute;
+/*aumenta a sobreposição,colocando o botão uma camada acima do span para que ele fique visível o suficiente.*/
+   z-index: 1;
+/*é utilizado para posicionar elementos no eixo y*/
+   transform: translateY(-50%);
+   top: 50%;
+}
+
+/*botão irá para a direita quando estiver no modo light*/
+.light #switch button{
+   right: 0;
+/*faz o left voltar a posição inicial*/
+   left: initial;
+}
+
+/* parte do botão que fica ao fundo/ switch*/
+#switch span{
+   display: block;
+   width: 64px;
+   height: 24px;
+   background: var(--surface-color);
+   border: 1px solid var(--stroke-color);
+   backdrop-filter: blur(4px);
+   -webkit-backdrop-filter: blur(4px);
+   border-radius: 9999px;
+}
+
+/*links*/
+
+ul{
+   list-style: none;
+
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+
+   padding: 24px 0;
+}
+
+ul li a{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   padding: 16px 24px;
+
+   background: var(--surface-color);
+   border:1px solid var(--stroke-color);
+   /*circunferencia da borda:*/
+   border-radius: 8px;
+
+   backdrop-filter:blur(4px);
+   /*verificar no "caniuse" se os navegadores suportam essa linguagem. Caso não suportem, colocar o prefixo que o site mandar*/
+   -webkit-backdrop-filter: blur(4px);
+
+   text-decoration: none;
+   font-weight: 500;
+
+   transition: background 0.3s;
+}
+
+/*animação do botão:*/
+ul li a:hover {
+   background: var(--surface-color-hover) ;
+   border:1.5px solid var(--text-color) ;
+}
+
+/*links icons*/
+#iconlinks{
+   display: flex;
+   /*justify center alinha os elementos ao meio*/
+   justify-content: center;
+   /*o gap é o espaço entre os icones*/
+
+   padding: 24px 0;
+
+   /*o font-size é o tamanho de todos os elementos desta div, ou seja, os icones*/
+   font-size: 24px;
+}
+
+#iconlinks a {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 16px;
+
+   transition: background 0.2s;
+   border-radius: 50%;
+   /*esse border transforma o preenchimento do padding em bolinha*/
+
+
+   /*alinha os itens ao centro do hover */
+}
+
+#iconlinks a:hover {
+   background: var(--highlight-color);
+   
+}
+
+footer {
+   padding: 24px 0;
+   text-align: center;
+   font-size: 14px;
+}
