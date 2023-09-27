@@ -97,14 +97,19 @@ body * {
 /*é utilizado para posicionar elementos no eixo y*/
    transform: translateY(-50%);
    top: 50%;
+   animation: deslizar-dark 0.2s forwards;
 }
 
 /*botão irá para a direita quando estiver no modo light*/
 .light #switch button{
-   right: 0;
-/*faz o left voltar a posição inicial*/
-   left: initial;
+ animation: deslizar-light 0.2s forwards;
+
+ /*o forwards mantém as propriedades finais dessa animação, e não volta ao valor inicial*/
 }
+
+ #switch button:hover{
+   outline: 8px solid var(--highlight-color);
+ }
 
 /* parte do botão que fica ao fundo/ switch*/
 #switch span{
@@ -207,3 +212,26 @@ footer {
    --bg-url: url(./assets/bg-desktop-light.jpg);
  }
 }
+
+/*animações*/
+@keyframes deslizar-light{
+ /*onde começa:*/
+ from {
+   left: 0;
+ }
+ /*onde termina*/
+ to {
+   left: 50%;
+ }
+}
+
+@keyframes deslizar-dark{
+   /*onde começa:*/
+   from {
+     left: 50%;
+   }
+   /*onde termina*/
+   to {
+     left: 0;
+   }
+  }
